@@ -4,9 +4,9 @@ window.onload = function() {
 
   const message = document.getElementById("message")
   document.getElementById("button").addEventListener("click", () => {
-    console.log("hello", TEST_KEY)
+    // console.log("hello", TEST_KEY)
     randosmessage = getRandomInt(1000, 10000)+randoAlpha+getRandomInt(1000, 10000)+randoAlpha
-    fetch("/.netlify/functions/hello-world?name=" + randosmessage+ TEST_KEY)
+    fetch("/.netlify/functions/hello-world?name=" + randosmessage)
       .then((data) => data.json())
       .then(({ msg }) => console.log(msg) || (message.innerHTML = msg))
   })
