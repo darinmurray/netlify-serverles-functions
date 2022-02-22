@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 alert("high there")
-
+ 
 exports.handler = async (event, context) => {
   const url = "https://icanhazdadjoke.com/";
   try {

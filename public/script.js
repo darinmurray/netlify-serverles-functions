@@ -1,13 +1,11 @@
 window.onload = function() {
 
-  const h1 = document.querySelector("h1");
-  h1.textContent = TEST_KEY || "nope";
+  var TEST_KEY = config.TEST_KEY;
 
-//  alert("loading js and ", TEST_KEY;)
   const message = document.getElementById("message")
   document.getElementById("button").addEventListener("click", () => {
-    console.log("hello", message)
-randosmessage = getRandomInt(1000, 10000)+randoAlpha+getRandomInt(1000, 10000)+randoAlpha
+    console.log("hello", TEST_KEY)
+    randosmessage = getRandomInt(1000, 10000)+randoAlpha+getRandomInt(1000, 10000)+randoAlpha
     fetch("/.netlify/functions/hello-world?name=" + randosmessage+ TEST_KEY)
       .then((data) => data.json())
       .then(({ msg }) => console.log(msg) || (message.innerHTML = msg))
@@ -41,9 +39,9 @@ const refreshJoke = async () => {
 };
 
 // load 1st joke
-refreshJoke();
+// refreshJoke();
 
-setInterval(refreshJoke, 3000);
+// setInterval(refreshJoke, 3000);
 
 
 

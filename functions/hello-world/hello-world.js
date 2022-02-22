@@ -1,6 +1,6 @@
 exports.handler = async (event, context) => {
   try {
-    const subject = event.queryStringParameters.name || "World at large"
+    const subject = TEST_KEY // event.queryStringParameters.name || "World at large"
     return { statusCode: 200, body: JSON.stringify({ msg: `Hello ${subject}` }) }
   } catch (err) {
     return { statusCode: 500, body: err.toString() }
