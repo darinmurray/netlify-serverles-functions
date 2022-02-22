@@ -1,6 +1,6 @@
 window.onload = function() {
 
-// alert("loading js")
+//  alert("loading js and ", TEST_KEY;)
   const message = document.getElementById("message")
   document.getElementById("button").addEventListener("click", () => {
     console.log("hello", message)
@@ -11,7 +11,7 @@ randosmessage = getRandomInt(1000, 10000)+randoAlpha+getRandomInt(1000, 10000)+r
   })
 
 
-  h1.textContent = TEST_KEY;
+ 
 
 const getRandomDadJoke = async () => {
   /* const url = "https://icanhazdadjoke.com/";
