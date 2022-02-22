@@ -5,12 +5,13 @@ window.onload = function() {
   document.getElementById("button").addEventListener("click", () => {
     console.log("hello", message)
 randosmessage = getRandomInt(1000, 10000)+randoAlpha+getRandomInt(1000, 10000)+randoAlpha
-    fetch("/.netlify/functions/hello-world?name=" + randosmessage)
+    fetch("/.netlify/functions/hello-world?name=" + randosmessage+ TEST_KEY)
       .then((data) => data.json())
       .then(({ msg }) => console.log(msg) || (message.innerHTML = msg))
   })
 
 
+  h1.textContent = TEST_KEY;
 
 const getRandomDadJoke = async () => {
   /* const url = "https://icanhazdadjoke.com/";
