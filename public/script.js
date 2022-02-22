@@ -10,8 +10,8 @@ console.log("hostname is: ", window.location.hostname );
   document.getElementById("button").addEventListener("click", () => {
     // console.log("hello", TEST_KEY)
     randosmessage = getRandomInt(1000, 10000)
-    // fetch("/.netlify/functions/hello-world?name=" + randosmessage)
-    fetch("./functions/hello-world?name=" + randosmessage)
+    fetch("/.netlify/functions/hello-world?name=" + randosmessage)
+    // fetch("./functions/hello-world?name=" + randosmessage)
       .then((data) => data.json())
       .then(({ msg }) => console.log(msg) || (message.innerHTML = msg))
   })
