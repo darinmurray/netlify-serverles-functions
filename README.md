@@ -19,3 +19,4 @@ npm i node-fetch
 
 
 comand line: netlify dev   to run in dev mode
+comand line: control-C   to STOP running in dev mode
