@@ -1,9 +1,10 @@
 window.onload = function() {
 
-alert("loading js")
+// alert("loading js")
   const message = document.getElementById("message")
   document.getElementById("button").addEventListener("click", () => {
     console.log("hello", message)
+    
     fetch("/.netlify/functions/hello-world?name=" + "Netlify")
       .then((data) => data.json())
       .then(({ msg }) => console.log(msg) || (message.innerHTML = msg))
