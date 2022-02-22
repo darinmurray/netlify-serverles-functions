@@ -15,7 +15,7 @@
 
 exports.handler = async (event, context) => {
   try {
-    const subject = TEST_KEY // for working published version
+    const subject = "TEST_KEY" // for working published version
     // const subject = event.queryStringParameters.name || "World at large"
 return { statusCode: 200, body: JSON.stringify({ msg: `Hello ${subject}` }) }
 // return { statusCode: 200, body }
