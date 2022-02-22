@@ -12,7 +12,7 @@ window.onload = function() {
   })
 
 
-
+console.log("hostname is: ", window.location.hostname );
 
 
 const getRandomDadJoke = async () => {
