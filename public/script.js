@@ -1,5 +1,8 @@
 window.onload = function() {
 
+  const h1 = document.querySelector("h1");
+  h1.textContent = TEST_KEY || "nope";
+
 //  alert("loading js and ", TEST_KEY;)
   const message = document.getElementById("message")
   document.getElementById("button").addEventListener("click", () => {
