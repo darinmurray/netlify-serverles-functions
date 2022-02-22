@@ -1,6 +1,6 @@
 window.onload = function() {
 
-  var TEST_KEY = config.TEST_KEY;
+  // var TEST_KEY = config.TEST_KEY;
 
   const message = document.getElementById("message")
   document.getElementById("button").addEventListener("click", () => {
