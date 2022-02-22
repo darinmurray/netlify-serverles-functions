@@ -1,4 +1,6 @@
 window.onload = function() {
+
+alert("loading js")
   const message = document.getElementById("message")
   document.getElementById("button").addEventListener("click", () => {
     console.log("hello", message)
@@ -6,4 +8,8 @@ window.onload = function() {
       .then((data) => data.json())
       .then(({ msg }) => console.log(msg) || (message.innerHTML = msg))
   })
+
+
+
+
 }
