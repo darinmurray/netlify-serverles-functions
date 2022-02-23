@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event) => { 
   const query = "blue" //qs.parse(event.body);
-  // const M_W_API = "07b f658c-2b15-4b71-9fa5-a12e 8aaa0f79"
+  const M_W_API = "07bf658c-2b15-4b71-9fa5-a12e8aaa0f79"
   const response = await fetch(
      
     `https://www.dictionaryapi.com/api/v3/references/sd2/json/${query}?key=${M_W_API}`,
