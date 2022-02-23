@@ -1,12 +1,14 @@
-const qs = require('querystring');
+const querySTringTHing = require('querystring');
 const fetch = require('node-fetch');
 // import fetch from 'node-fetch';
 
+
 exports.handler = async (event) => { 
-  const query = "blue" //qs.parse(event.body);
+  const query = event.body.split('=')[1] //"blue" //qs.parse(event.body);
   // const M_W_API = "07bf658c-2b15-4b71-9fa5-a12e8aaa0f79"
   const response = await fetch(
      
+    // `https://www.dictionaryapi.com/api/v3/references/sd2/json/${query}?key=${process.env.M_W_API}`,
     `https://www.dictionaryapi.com/api/v3/references/sd2/json/${query}?key=${process.env.M_W_API}`,
     // `https://www.dictionaryapi.com/api/v3/references/sd2/json/${query}?key="+M_W_API`,
     // `https://api.unsplash.com/search/photos?query=${query}`,
@@ -31,11 +33,17 @@ exports.handler = async (event) => {
     },
     
     body: `
-    Token is:${process.env.UNSPLASH_API_TOKEN}, results length is: ${firstResult}
+    Results for :${query.to_string}
+    Some value is: ${firstResult[0].shortdef}
 
-    `,
+    ` //+ JSON.stringify(query, undefined, 4),
+    // `+ JSON.stringify(query.body, undefined, 4),
   };
 };
+
+
+// "body":"query=dog",
+
 
 
 // exports.handler = async (event) => {
