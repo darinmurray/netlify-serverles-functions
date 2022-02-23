@@ -27,3 +27,6 @@ https://app.netlify.com/teams/darinmurray/overview
 https://medium.com/better-practices/serverless-functions-the-fast-way-43d6128ff8d5
 
 https://github.com/netlify/netlify-lambda
+
+
+Ok, this is working as confitured, using a query string in the url, e.g. ?query=steel
