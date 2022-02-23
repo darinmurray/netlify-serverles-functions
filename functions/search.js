@@ -12,6 +12,7 @@ exports.handler = async (event) => {
     // `https://api.unsplash.com/search/photos?query=${query}`,
     {
       method: 'GET',
+      mode: 'no-cors',
       headers: {
         // Authorization: `Client-ID qHPEkhMngfL7c9A5KoAhYbWXv7OcuFoWIEg6p7p_I-0`,
         Authorization: `Client-ID 07bf658c-2b15-4b71-9fa5-a12e8aaa0f79`,
