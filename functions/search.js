@@ -1,9 +1,16 @@
 const qs = require('querystring');
 const fetch = require('node-fetch');
+//const { url } = require('inspector');
 // import fetch from 'node-fetch';
 
 exports.handler = async (event) => { 
-  const query = qs.parse(event.body);
+//const paramsString = url;
+//let searchParams = new URLSearchParams(paramsString);
+//const query = searchParams.getAll('query');
+
+
+
+   const query = "blue" // qs.parse(event.body);
   // const M_W_API = "07b f658c-2b15-4b71-9fa5-a12e 8aaa0f79"
   const response = await fetch(
      
