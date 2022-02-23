@@ -16,6 +16,7 @@ exports.handler = async (event) => {
       headers: {
         // Authorization: `Client-ID qHPEkhMngfL7c9A5KoAhYbWXv7OcuFoWIEg6p7p_I-0`,
         Authorization: `Client-ID ${process.env.UNSPLASH_API_TOKEN}`,
+        Location: "/",
       },
     }
   )
