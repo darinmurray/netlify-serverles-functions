@@ -3,10 +3,12 @@ const fetch = require('node-fetch');
 // import fetch from 'node-fetch';
 
 exports.handler = async (event) => { 
-  // const query = "blue" //qs.parse(event.body);
+  const query = qs.parse(event.body);
   // const M_W_API = "07b f658c-2b15-4b71-9fa5-a12e 8aaa0f79"
   const response = await fetch(
      
+    // window.location ?? look into this
+
     `https://www.dictionaryapi.com/api/v3/references/sd2/json/${query}?key=${M_W_API}`,
     // `https://www.dictionaryapi.com/api/v3/references/sd2/json/${query}?key="+M_W_API`,
     // `https://api.unsplash.com/search/photos?query=${query}`,
@@ -17,6 +19,7 @@ exports.handler = async (event) => {
         // Authorization: `Client-ID qHPEkhMngfL7c9A5KoAhYbWXv7OcuFoWIEg6p7p_I-0`,
         Authorization: `Client-ID ${process.env.UNSPLASH_API_TOKEN}`,
         Location: "/",
+        // Cache-Control: no-cache, ?? 
       },
     }
   )
