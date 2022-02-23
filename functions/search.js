@@ -9,14 +9,15 @@ exports.handler = async (event) => {
     {
       method: 'GET',
       headers: {
-        Authorization: `Client-ID ${process.env.UNSPLASH_API_TOKEN}`,
+        // Authorization: `Client-ID ${process.env.UNSPLASH_API_TOKEN}`,
+        Authorization: `Client-ID `,
       },
     }
   )
     .then((response) => response.json())
     .catch((error) => console.error(error));
 
-  const firstResult = "response.results[0]";
+  const firstResult = response.results[0];
 
   return {
     statusCode: 200,
@@ -26,8 +27,8 @@ exports.handler = async (event) => {
     body: `
     Token is:${process.env.UNSPLASH_API_TOKEN}
       <img
-        src="$ { firstResult.urls.regular}"
-        alt="$ { firstResult.alt_description}"
+        src= "${firstResult.urls.regular}"
+        alt="${firstResult.alt_description}"
       />
     `,
   };
