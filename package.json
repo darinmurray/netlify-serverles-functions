@@ -1,23 +1,23 @@
 {
-  "name": "netlify-serverles-functions",
+  "name": "serverless-functions-the-fast-way",
   "version": "1.0.0",
-  "description": "sandbox for testing netlify workfkow, env and serverless functions",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darinmurray/netlify-serverles-functions.git"
+    "url": "git+https://github.com/jlengstorf/serverless-functions-the-fast-way.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/darinmurray/netlify-serverles-functions/issues"
+    "url": "https://github.com/jlengstorf/serverless-functions-the-fast-way/issues"
   },
-  "homepage": "https://github.com/darinmurray/netlify-serverles-functions#readme",
+  "homepage": "https://github.com/jlengstorf/serverless-functions-the-fast-way#readme",
   "dependencies": {
-    "node-fetch": "^3.2.0"
+    "node-fetch": "^2.6.0"
   }
 }

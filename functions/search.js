@@ -1,10 +1,5 @@
 const qs = require('querystring');
-const fetch = require("node-fetch");
-// const fetch = require('node-fetch');
-// const fetch = import('node-fetch');
-// const fetch = import fetch from 'node-fetch'
-// require('whatwg-fetch')
-// import 'whatwg-fetch'
+const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
   const { query } = qs.parse(event.body);
