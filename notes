@@ -1,25 +1,85 @@
 # netlify-serverles-functions
-sandbox for testing netlify workfkow, env and serverless functions
+create your directory or blank project, include a 'functions' folder for lambdas
 
+open console in vscode, run some commands to set things up:
+1) install command line tools ( the -g flag is for global install, may cause ussues?)
+$sudo npm install -g netlify-cli
 
+2) terminal, cd to project
+$ npm init -y
+create .gitignore OUTSIDE of published directory and add 'node_modeuls' to the file
+npm i node-fetch
 
+You can use 'netlify link' (command line, if you have netlify CLI installed) to connec to netlify actual site
+this goes to your Netlify dashboard, coppies the environment variables and brings them local for your use 
+doing the above, you do NOT NEED .env functions and such
+$ netlify link
+
+# I'm not sure what step this is...
 create netlify.toml (outside published directory) with contents: 
 # example netlify.toml
 [build]
   functions = "functions/" # where your js functions are stored
   publish = "public/"  # the root directory of published site
+#in .toml file, setup redirects
+[[redirects]]
+    from = "/api/*" 
+    to = "/.netlify/functions/:splat"
+    status = 200
+    
+    // then use fetch('/api/XXXX', etc. 
 
-create actual 'functions' folder (outside published directory) and create a js file with the funciton(s) to be called
 
-terminal, cd to project
-npm init -y
-create .gitignore OUTSIDE of published directory and add 'node_modeuls' to the file
-npm i node-fetch
+to run in dev mode
+$ netlify dev 
+
+to STOP running in dev mode
+$ control-C  
+
+
+create the new git repo on github( find way to do thi son comand line ) then push:
+# add your new repo as an origin
+
+git init ( or next step instead?)
+# IMPORTANT: make sure to use your own username/repo name!
+git remote add origin git@github.com:yourusername/yourreponame.git
+
+# add all the files
+git add -A
+
+# commit the files
+git commit -m 'First Commit'
+
+# push the changes to GitHub
+git push -u origin master
+
+
+------------- create netlify site -----------------
+You can create your site through the Netlify dashboard or through the CLI
+# install the Netlify CLI globally
+npm install --global netlify-cli
+
+# log into your Netlify account
+netlify login
+
+# initialize a new site
+netlify init
+
+somehow this connects to the git repo we jsut created?
+Once the site has been created, we can grab the URL from the terminal output. 
+e.g., https://confident-nightingale-4e5a0b.netlify.com/
 
 
 
-comand line: netlify dev   to run in dev mode
-comand line: control-C   to STOP running in dev mode
+
+
+
+
+
+
+    
+
+
 
 https://app.netlify.com/teams/darinmurray/overview
 
