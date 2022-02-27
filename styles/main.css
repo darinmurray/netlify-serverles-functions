@@ -1,0 +1,27 @@
+
+#get_me {
+   padding:20px;
+   width:400px;
+   border: 1px solid black; 
+   background-color:pink;
+   cursor: pointer;
+}
+
+
+.fade-in {
+    visibility: visible;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
