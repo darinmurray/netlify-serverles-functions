@@ -6,7 +6,6 @@ exports.handler = async event => {
     const querystring = event.queryStringParameters;
     const searchable = querystring.searchable || 'democracy';
     const url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/${searchable}?key=${process.env.M_W_API}`;
-    // const url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/turtle?key=07bf658c-2b15-4b71-9fa5-a12e8aaa0f79`;
     try {
         const defStream = await fetch(url, {
             mode: 'no-cors',

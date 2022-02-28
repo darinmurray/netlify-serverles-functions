@@ -882,12 +882,9 @@ window.onload = function () {
     
         let speaker = "<span id='speak_word' class='material-icons md-60'> record_voice_over </span>"
     $("#display_board_X").prepend(speaker)
-    
-    // flipCharacters( )
-    
     }; // ====== end of initial character rendering ====== //
     // put initial word on screen
-    renderCharacters( "= :-)" ) // getString()
+    renderCharacters( "= :-)" ) // getString() 
       
     
       
@@ -944,21 +941,17 @@ window.onload = function () {
     
     
     
-    // ``````````````````````  D O M specific  `````````````````````` // 
-    // ``````````````````````   (functionS)   `````````````````````` // 
-    
+    // ``````````````````````  D O M specific   `````````````````````` // 
+    // ``````````````````````   (functionS)     `````````````````````` // 
+    // ``````````````````````  ⬇ ⬇ ⬇ ⬇ ⬇ ⬇  `````````````````````` // 
+  
     // ====== get selected value of any selection list ======== //
-    // YOUR_SELECTOR_ID.options[YOUR_SELECTOR_ID.selectedIndex].text
-    // should return multiple values to be useful, currently just returns text value
-    // selected value, text
-    // https://www.javascripttutorial.net/javascript-return-multiple-values/
     function getSelected(idOfSelector) {
-      let thing = category
-      let selectedOption = thing.options[thing.selectedIndex].text
+      let selected = category
+      let selectedOption = selected.options[selected.selectedIndex].text
       // console.log("FCN => selectedOption: ", selectedOption);
       return selectedOption
     }
-    
     
     // ===============  S P E E D  ================ // 
     // ===============  (sliders)  ================ // 
@@ -982,6 +975,7 @@ window.onload = function () {
     // ``````````````````````                 `````````````````````` //  
     // ``````````````````````      E N D      `````````````````````` // 
     // ``````````````````````                 `````````````````````` // 
+    // ☞ ☛ ➢ ➤ ✓ ✔︎ ↑ ⚠︎ ⇧ ⇧ ⇧⇧⇩⇨⇦ ↦ ➠
     
     
     
@@ -1009,45 +1003,25 @@ window.onload = function () {
     
     
     
-    
-    function lookUp(providedWord){
+function lookUp(providedWord){
         if ( providedWord !== "undefined" ) { 
-          word = providedWord
+        word = providedWord
         } 
         if (getSelected(category) == 'Colors') {
-          // This makes camelCase colors readable if css camelCase collors are bieng used
-          word = makeReadable(word.toString()) //always returns a string...
-          console.log(`%c=> FINAL --> C O L O R  N A M E <-- being used: is a STRING`, "color:red", word);
+        // This makes camelCase colors readable if css camelCase collors are bieng used
+        word = makeReadable(word.toString()) //always returns a string...
         }
     getDefinition(word)
-    };// end function
+};
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    function getDefinitionXXX(word) {
-      const M_W_API = "07bf658c-2b15-4b71-9fa5-a12e8aaa0f79"; 
-      $.ajax("https://www.dictionaryapi.com/api/v3/references/sd2/json/"+word+"?key="+M_W_API).done(function (response) {  
-        make_sense(response)
-      }).fail(function() {
-        alert(" :-( ") // An error occurred
-      });
-    }
-    
-    
-    
-    const getDefinition = async (event) => {
-      const supply = [ "lizard","lion","ukraine","tree","car","rocket", ]   
-      const random = Math.floor(Math.random() * supply.length);
-      const searchable = word // supply[random];
+     
+
+const getDefinition = async (event) => {
+    // const supply = [ "lizard","lion","ukraine","tree","car","rocket", ]   
+    // const random = Math.floor(Math.random() * supply.length);
+    const searchable = word // supply[random];
     
     /* ****************  for S E R V E R L E S S  ***************** */
     const url = "/.netlify/functions/search?searchable="+searchable ;
@@ -1055,7 +1029,7 @@ window.onload = function () {
     /* ****************  E N D  ***************** */
     
     /* **************** for NON serverles ***************** */
-    // const url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/${searchable}?key=07bf658c-2b15-4b71-9fa5-a12e8aaa0f79`;
+    // const url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/${searchable}?key=${process.env.M_W_API}`;
     // const defStream = await fetch(url, {
     //     headers: {
     //         Accept: 'application/json'
@@ -1065,167 +1039,106 @@ window.onload = function () {
     
     const jsonDefinition = await defStream.json();
     const definition = jsonDefinition 
-    console.log(`%c=> FINAL --> result <-- being returned is`, "color:red", definition);
     make_sense(definition)
     return definition;
-    };
+};
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    function make_sense(response){
-      console.log(`%c=> full definition returned `, "color:lime", response);
-      // alert("yes, you got it right")
-        // Destroy the existing definition in the DOM
-        $("#definition").text('')
-        if (response.length == 0) {  
-          // if NOTHING at all is returned 
-          document.getElementById("definition").textContent = "I thnk a cat was walking on your keyboard... Try again"
-          word = null
-          flipCharacters(":-(")
-        } else if (response[0].constructor.name == "String") { 
-          // if the first itmem [0] in the response is a string, then it's returning an array of suggestions
-          $("#definition").append("No luck... try ==> ");
-              for (x in response.slice(0, 5) ) {
-                console.log(`%c=> response: `, "color:cyan", response[x]);
-                let link = `<span class="look_this_up" >${response[x]} </span>`
-                // document.getElementById("definition").appendChild(link)  
-                $("#definition").append(link);
-              }
-              // alows Color Names not found to be displayed anyway
-              // otherwise, this would be flipCharacters(), and go BELOW word = null
-              flipCharacters(word)  
-          // word = null
-        } else {
-          getDefs(response)
-          flipCharacters() // being over ridden by 'word'?
-        }
-    };// end function
-    
-      
-    
-    
-    
-    // find the first flip character and get it's left position
-    let pos_1_1 = document.getElementById("pos_1_1")
-    let marginLeft = (pos_1_1.offsetLeft-(item_wrapper_margin) )//+half_margin
-    // position the syllable wrapper
-    $("#syl_wrapper").css( "margin-left",`${marginLeft}px` )
-    $("#syl_wrapper").text(' ')
-    
-    
-    function getDefs(response) { 
-      // console.log(`%c=> word actually looked up with getDefs(): `, "color:green", word);
-      // console.log("------------- Webster Parse  -------------");
-      // ------------------ Get Values Fromn Response ----------------------------- //
-      let shortDefsArray = response[0].shortdef // get all if they exist
-      let finalDef = shortDefsArray[0] // the first short version of the definition
-      let finalType = response[0].fl // verb/noun/etc.
-      let separated
-      let finals = (response[0].meta.id).split(":")[0]; // should be hwi.hw but it sometimes contains an asterisk
-      let finalSyl = response[0].hwi.hw 
-      let pronunciation = response[0].hwi.prs ? response[0].hwi.prs[0].mw : "Not Available"
-      let multiSyllabol = (finalSyl.indexOf("*") >= 0 ) ? true : false
-      if (multiSyllabol == true) { separated = (finalSyl).split('*') } 
-      
-    
-      // ------------------ rendering in the DOM ----------------------------- //
-      // $("#explanation").text(explanation) // unused
-      //$("#word_hero").text(finals)
-      if ( multiSyllabol ) { redablesyllables = separated.join(" - ") } else {redablesyllables = finalSyl }
-      $("#pronunciation").text(pronunciation)
-      $("#type").text(finalType)
-      
-        $("#syllables").text('') // clear out existing
-          $("#syl_wrapper").text('')
-        // itterate through syllables, if existing
-        if (multiSyllabol) {
-          for (let x in separated) { //sylables
-            let chunk_l = separated[x].length
-            let chunk_w = chunk_l*item_w
-            // with speakable chunk, they just kind of suck...
-            // $("#syl_wrapper").append( `<span id="chunk_${x}" class="syl_chunk syllabol"><div class="l_brace">  </div><div class="c_brace"> ${separated[x]} </div><div class="r_brace">  </div></span>` ) 
-            $("#syl_wrapper").append( `<span id="chunk_${x}" class="syl_chunk syllabol"><div class="l_brace">  </div><div class="c_brace">  </div><div class="r_brace">  </div></span>` ) 
-            $(`#chunk_${x}`).css( "width",`${chunk_w}px` )
-            
-              // for (let y in separated[x]) { // letters
-              //     // x represents the syl Number, y represents the char number in that syl
-              //   $("#syl_wrapper").append( `<span class="syl_letter">${separated[x][y]}${y}</span>` )
-              // }
-              // $("#syl_wrapper").append( `<span class="syl_spacer">-</span>` )
-              // this works great, just dont' need it
-              // $("#syl_wrapper").append( `<span class="syl_chunk">${separated[x]}</span>` )
-          
-            $("#syllables").append( `<span class="syllable">${separated[x]}&nbsp;</span>` ) // <==(blank) space here matters!!
-          }
-        } else { 
-          // empty syllables hilighter
-          $("#syl_wrapper").text('...')
-          // $("#syllables").text(redablesyllables) 
-          $("#syllables").append(`<span class="syllable">${finalSyl}&nbsp;</span>`)
-        }
-    
-            // itterate through shordDefsArray, if existing
-            if (shortDefsArray.length > 0) {
-              // console.log(`%c=> defs= `, "color:yellow", shortDefsArray);
-              $("#definition").text(finalDef + '.')
-              for (let x in shortDefsArray) { 
-                // inject as LI in the DOM
-                // console.log(`%c=> Definition${x}: `, "color:yellow", shortDefsArray[x]);
-              }
+       
+ 
+function make_sense(response){
+    // Destroy the existing definition in the DOM
+    $("#definition").text('')
+    if (response.length == 0) {  
+        // if NOTHING at all is returned 
+        document.getElementById("definition").textContent = "I thnk a cat was walking on your keyboard... Try again"
+        word = null
+        flipCharacters(":-(")
+    } else if (response[0].constructor.name == "String") { 
+        // if the first itmem [0] in the response is a string, 
+        // then it's returning an array of suggestions, display and make them clickable
+        $("#definition").append("No luck... try ==> ");
+            for (x in response.slice(0, 5) ) {
+            console.log(`%c=> response: `, "color:cyan", response[x]);
+            let link = `<span class="look_this_up" >${response[x]} </span>` 
+            $("#definition").append(link);
             }
-      console.log("------------- end Webster Parse -------------");
-    }// end of getDefs()
+            // alows Color Names not found to be displayed anyway
+            // otherwise, this would be flipCharacters(), and go BELOW word = null
+            flipCharacters(word)  
+        // word = null
+    } else {
+        getDefs(response)
+        flipCharacters()
+    }
+}; 
+    
+      
+    
+    
+    
+// find the first flip character and get it's left position
+let pos_1_1 = document.getElementById("pos_1_1")
+let marginLeft = (pos_1_1.offsetLeft-(item_wrapper_margin) )//+half_margin
+// position the syllable wrapper
+$("#syl_wrapper").css( "margin-left",`${marginLeft}px` )
+$("#syl_wrapper").text(' ')
+
+
+function getDefs(response) { 
+    // ------------------ Get Values Fromn Response ----------------------------- //
+    let shortDefsArray = response[0].shortdef // get all if they exist
+    let finalDef = shortDefsArray[0] // the first short version of the definition
+    let finalType = response[0].fl // verb/noun/etc.
+    let separated
+    let finals = (response[0].meta.id).split(":")[0]; // should be hwi.hw but it sometimes contains an asterisk
+    let finalSyl = response[0].hwi.hw 
+    let pronunciation = response[0].hwi.prs ? response[0].hwi.prs[0].mw : "Not Available"
+    let multiSyllabol = (finalSyl.indexOf("*") >= 0 ) ? true : false
+    if (multiSyllabol == true) { separated = (finalSyl).split('*') } 
+    
+
+    // ------------------ rendering in the DOM ----------------------------- //
+    if ( multiSyllabol ) { redablesyllables = separated.join(" - ") } else {redablesyllables = finalSyl }
+    $("#pronunciation").text(pronunciation)
+    $("#type").text(finalType)
+    
+    $("#syllables").text('') // clear out existing
+        $("#syl_wrapper").text('')
+    // itterate through syllables, if existing
+    if (multiSyllabol) {
+        for (let x in separated) { //sylables
+        let chunk_l = separated[x].length
+        let chunk_w = chunk_l*item_w
+        // with speakable chunk, they just kind of suck...
+        // $("#syl_wrapper").append( `<span id="chunk_${x}" class="syl_chunk syllabol"><div class="l_brace">  </div><div class="c_brace"> ${separated[x]} </div><div class="r_brace">  </div></span>` ) 
+        $("#syl_wrapper").append( `<span id="chunk_${x}" class="syl_chunk syllabol"><div class="l_brace">  </div><div class="c_brace">  </div><div class="r_brace">  </div></span>` ) 
+        $(`#chunk_${x}`).css( "width",`${chunk_w}px` )       
+        $("#syllables").append( `<span class="syllable">${separated[x]}&nbsp;</span>` ) // <==(blank) space here matters!!
+        }
+    } else { 
+        // empty syllables hilighter
+        $("#syl_wrapper").text('...')
+        $("#syllables").append(`<span class="syllable">${finalSyl}&nbsp;</span>`)
+    }
+    // itterate through shordDefsArray, if existing
+    if (shortDefsArray.length > 0) {
+        $("#definition").text(finalDef + '.')
+        for (let x in shortDefsArray) { 
+        // inject as LI in the DOM
+        // ==> TODO: add all short defs, click to cycle? 
+        // console.log(`%c=> Definition${x}: `, "color:yellow", shortDefsArray[x]);
+        }
+    }
+}// end of getDefs()
     
     
     
     
+}; // end on document load
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-     }; // end on document load
-    
-    
-    
-    
-    
-    
-    // var rect = pos_1_1.getBoundingClientRect();
-    // var this_width = pos_1_1.offsetWidth //clientWidth
-    // console.log(`%c=> this_width: `, "color:cyan", this_width);
-    // console.log(rect.top, rect.right, rect.bottom, rect.left);
-    
-    
-    
-     
-    
-    
-    
-    
-    
-    
-    
+ 
     // quick test: WORDS API
     
     // const settings = {
@@ -1244,86 +1157,3 @@ window.onload = function () {
     // });
     
      
-    
-    
-    
-     // trash
-    
-    // for reference... try google material icons instead of fontastic
-    // <span id="user_name" class="material-icons md-60"> fingerprint </span>
-    
-    
-    // event listner function for radio buttons...
-    //https://stackoverflow.com/questions/8922002/attach-event-listener-through-javascript-to-radio-button
-    // window.EventTarget.prototype.addDelegatedListener = function(type, delegateSelector, listener) {
-    //   this.addEventListener(type, function (event) {
-    //       if (event.target && event.target.matches(delegateSelector)) {
-    //           listener.call(event.target, event)
-    //       }
-    //   });
-    // }
-    
-    
-    // let thing = document.getElementById("voiceList")
-    // console.log(`%c=> thing: `, "color:yellow", thing);
-    // thing.addDelegatedListener("click", "input[type='radio']", function(event) {
-    //   console.log("what??");
-    //   testing = this.attributes[4].value
-    //   console.log(`%c=> this: `, "color:cyan", testing);
-    // });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // // ``````````````````````  U T I L I T Y  `````````````````````` // 
-    // // ``````````````````````   (functionS)   `````````````````````` // 
-    // // ``````````````````````   ==========    `````````````````````` //  
-    
-    
-    // // ````````   Generate a Random Int between min & max   ```````` //
-    // // getRandomInt(1, 10)*100   for increments less than one second
-    // function getRandomInt(min, max) { 
-    //   return Math.round((min - 0.5) + Math.random() * (max - min + 1));
-    // }
-    
-    // // ====== get % of # between min & max of a given range ========= //
-    // // E.G. from 35 to 356, what percentage (of the range) is 121? 
-    // function getPercentOfRange(min, current, max) {  
-    //   // change *1 to *100 for whole numbers
-    //   // currently returning opacity 0.1 - 1.0
-    //   return percentage = (((current - min) * 1) / (max - min)).toFixed(1);  
-    // } 
-    
-    // // ``````````````````````      E N D      `````````````````````` //  
-    // // ``````````````````````  U T I L I T Y  `````````````````````` // 
-    
-    // // Template Literals use back-ticks (``) rather than the quotes ("") to define a string:  you can use both single and double quotes inside a string:
-    // // Example: let text = `He's often called "Johnny"`;
-    
-    // // ``````````````````````   (functionS)   `````````````````````` // 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
