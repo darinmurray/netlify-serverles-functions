@@ -3,7 +3,7 @@ create your directory or blank project, include a 'functions' folder for lambdas
 
 open console in vscode, run some commands to set things up:
 1) install command line tools ( the -g flag is for global install, may cause ussues?)
-$sudo npm install -g netlify-cli
+$ sudo npm install -g netlify-cli
 
 2) terminal, cd to project
 $ npm init -y
