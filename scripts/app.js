@@ -1050,17 +1050,17 @@ window.onload = function () {
       const searchable = word // supply[random];
     
     /* ****************  for S E R V E R L E S S  ***************** */
-    // const url = "/.netlify/functions/search?searchable="+searchable ;
-    // const defStream = await fetch(url);
+    const url = "/.netlify/functions/search?searchable="+searchable ;
+    const defStream = await fetch(url);
     /* ****************  E N D  ***************** */
     
     /* **************** for NON serverles ***************** */
-    const url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/${searchable}?key=07bf658c-2b15-4b71-9fa5-a12e8aaa0f79`;
-    const defStream = await fetch(url, {
-        headers: {
-            Accept: 'application/json'
-          }
-    });
+    // const url = `https://www.dictionaryapi.com/api/v3/references/sd2/json/${searchable}?key=07bf658c-2b15-4b71-9fa5-a12e8aaa0f79`;
+    // const defStream = await fetch(url, {
+    //     headers: {
+    //         Accept: 'application/json'
+    //       }
+    // });
     /* **************** E N D ***************** */
     
     const jsonDefinition = await defStream.json();
