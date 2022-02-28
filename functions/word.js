@@ -31,6 +31,26 @@ exports.handler = async event => {
 
 
 
+// fetch("https://wordsapiv1.p.rapidapi.com/words/?random=true", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+// 		"x-rapidapi-key": "be448d7a34mshce4b59ff5f95401p1ec2e1jsn34df96c2908a"
+// 	}
+// })
+// .then(response => {
+// 	console.log(response);
+// })
+// .catch(err => {
+// 	console.error(err);
+// });
+
+
+
+
+
+
+
 // exports.handler = async () => ({
 //     statusCode: 200,
 //     body: 'bleep blop bleep blerb bloobob...',
