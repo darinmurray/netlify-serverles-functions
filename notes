@@ -1,4 +1,23 @@
-# netlify-serverles-functions
+
+// install command line tools
+sudo npm install -g netlify-cli
+
+YOu can use 'netlify link' (command line, if you have netlify CLI installed) to connec to netlify actual site
+this goes to your Netlify dashboard, coppies the environment variables and brings them local for your use 
+doing the above, you do NOT NEED .env functions and such
+
+in .toml file, setup redirects
+[[redirects]]
+    from = "/api/*" 
+    to = "/.netlify/functions/:splat"
+    status = 200
+    
+    // then use fetch('/api/XXXX', etc. 
+    
+    
+    
+    
+    # netlify-serverles-functions
 create your directory or blank project, include a 'functions' folder for lambdas
 
 open console in vscode, run some commands to set things up:
