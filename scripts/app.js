@@ -473,7 +473,29 @@ window.onload = function () {
     var rate = document.querySelector('#rate');
     //var rateValue = document.querySelector('.rate-value');
     var voices = [];
-    let allVoices = window.speechSynthesis.getVoices()
+
+    // function getVoices() {
+      var allVoices = window.speechSynthesis.getVoices()
+    // }
+  var isSafari = window.safari !== undefined;
+console.log(`%cSafari value??? `, "color:lime", isSafari);
+ 
+  if (isSafari == false) {
+    // This breaks in safari, but does not effect performance
+    window.speechSynthesis.addEventListener("voiceschanged", () => {
+       allVoices = speechSynthesis.getVoices()
+       getMyVoices()
+    })
+}
+// setTimeout(() => {
+//   getVoices()
+//   getMyVoices()
+// }, 1000);
+
+
+    // speech_voices = window.speechSynthesis.getVoices();
+
+    console.log(`%c[ - allVoices: `, "color:lime", window.speechSynthesis.getVoices());
     let myVoices = []
     // much info here: https://talkrapp.com/speechSynthesis.html
     // https://cloud.google.com/text-to-speech/
@@ -493,7 +515,7 @@ window.onload = function () {
         allVoices[i].lang == 'en-IE') 
         myVoices.push(allVoices[i])
         }
-    // console.log(`%c[ - myVoices: `, "color:MediumSeaGreen", myVoices);
+    console.log(`%c[ - myVoices: `, "color:MediumSeaGreen", myVoices);
     console.log(`%c[ ------ Voice List Created -------- ] `, "color:MediumSeaGreen");
     }
     getMyVoices()

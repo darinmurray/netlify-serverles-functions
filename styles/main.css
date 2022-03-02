@@ -467,8 +467,8 @@ font-size: 30px;
 /* just the text */
 #voiceList label>span { 
 font-size: 10px;
-font-family: "Poppins", sans-serif;
-font-display: fallback;
+/* font-family: "Poppins", sans-serif;
+font-display: fallback; */
 position: absolute;
 top: 60%;
 left: 50%;
