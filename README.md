@@ -12,6 +12,12 @@ No images are used (except for the screenshots in this readMe).
 <p align="center">
 Webster Elementary API for definitions and sylable brakdowns
 </p>
+<p align="center">
+Utilize Netlify Serverless Functions
+</p>
+<p align="center">
+GIT/Netlify CI/CD workflow
+</p>
 
 ### Words : Do do and Improvements needed
 
