@@ -18,15 +18,17 @@ Webster Elementary API for definitions and sylable brakdowns
 - [x] display random word
 - [x] display in a readable, fun, interesting way
 - [x] use multiple db's for source (currently local arrays)
+- [ ] lazy load db's (currently local arrays)
 - [x] use Webster dictionairy for definitions and pronunciation
+- [x] display primary definition
 - [ ] display (multiple) definitions
 - [x] speakable definitions
 - [x] change to random bg color on each new word
-- [x] change background color to match word if CSS colors db is in use
+- [x] change background color to match word if CSS named colors db is in use
 - [x] speak word with voice of choice
 - [x] user choose new word with click
-- [x] user choose upper case, lower case, capitolize
-- [x] user choose witch db for source
+- [x] user choose upper case, lower case, capitalize
+- [x] user choose witch db for word source
 - [x] user choose dificulty (word length)
 - [x] user choose voice, rate and pitch for synth voice
 - [ ] use API for word, instead of local array in a file?
