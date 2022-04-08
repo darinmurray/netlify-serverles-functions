@@ -30,8 +30,8 @@ Webster Elementary API for definitions and sylable brakdowns
 - [x] user choose dificulty (word length)
 - [x] user choose voice, rate and pitch for synth voice
 - [ ] use API for word, instead of local array in a file?
-      works, but diffifult words are often chosen
-- [ ] allow user to input list of their own pertnent words
+      works, but difficult words are often chosen
+- [ ] allow user to input list of their own pertinent words
 - [x] hilight letters on hover (teaching aid)
 - [x] keep hilighted on click (for sectional pronunciation)
 - [x] adjust # of characters displayed for vw
@@ -40,7 +40,7 @@ Webster Elementary API for definitions and sylable brakdowns
       scale down as much as 70% to allow more characters to fit smaller screens
       scaling begins at 6 characters
 - [ ] add horizontal 'windodw shade' to pull from left/right to cover letters
-- [ ] add horizontal bars under letters to group by syllables
+- [x] add horizontal bars/braces under letters to group by syllables
 - [x] add 'dark mode' or collors on/off
 - [x] click-to-pronounce syllables
 - [ ] click-to-pronounce pronunciation characters
